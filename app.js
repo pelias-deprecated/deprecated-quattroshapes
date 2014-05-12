@@ -25,8 +25,11 @@ var mapper = require('./imports/localities/mapper');
 
 stream.on( 'ready', function(){
   stream
+    .on( 'error', console.log.bind(this) )
     .pipe( mapper )
+    .on( 'error', console.log.bind(this) )
     // .pipe( debugmapper )
     .pipe( esclient.stream )
+    .on( 'error', console.log.bind(this) )
     // .pipe( objectToJsonStream ).pipe( process.stdout );
 })
