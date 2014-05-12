@@ -7,6 +7,11 @@ mapper._write = function( data, enc, next ){
 
   try {
 
+    // Skip records where geometry is too large for ES to process
+    if( data.geometry.coordinates.length > 1000 ){
+      throw new Error( 'SKIPPING RECORD - COORDS LENGTH" ' + data.geometry.coordinates.length );
+    }
+
     this.push({
       _index: 'pelias', _type: 'locality', _id: data.properties.qs_loc_lc,
       data: {
