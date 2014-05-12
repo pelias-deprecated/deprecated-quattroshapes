@@ -11,13 +11,16 @@ var ShapeFileStream = require('./lib/ShapeFileStream'),
 var sanityCheck = require('./imports/sanityCheck/mapper');
 
 // neighborhoods
+// { _invalid: 0, _valid: 49906 }
 var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
 var mapper = require('./imports/neighborhoods/mapper');
 
 // localities
-// { _invalid: 118275, _valid: 45110 }
+// { _invalid: 26404, _valid: 136981 }
 // var stream = new ShapeFileStream( './data/gn-qs_localities.shp' );
 // var mapper = require('./imports/localities/mapper');
+
+// Debugger
 // var debugmapper = require('./imports/debug/mapper');
 
 // Transform stream for pretty output

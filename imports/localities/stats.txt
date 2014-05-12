@@ -1,0 +1,38 @@
+stats: { _invalid: 118275, _valid: 45110 }
+
+total: 163380
+
+non-falsy properties: {
+  qs_a1_alt: 9133,
+  qs_a2r: 4365,
+* qs_level: 163380,
+  qs_gn_id: 137037,
+* qs_iso_cc: 163380,
+* qs_la_lc: 163380,
+  qs_id: 65077,
+* qs_a1: 163380,
+  qs_a0: 160108,
+  qs_a2: 57503,
+  qs_a2_alt: 6732,
+  qs_a2_lc: 26473,
+  qs_scale: 0,
+  qs_pop: 0,
+  qs_a0_lc: 4404,
+  qs_a1r_lc: 13533,
+  qs_a2r_lc: 0,
+  qs_loc_alt: 103357,
+  qs_adm0: 157921,
+  qs_adm0_a3: 163362,
+* qs_source: 163380,
+  qs_la: 65238,
+  qs_la_alt: 0,
+  qs_a1_lc: 89929,
+  qs_type: 147878,
+  qs_a1r_alt: 0,
+  qs_loc_lc: 45110,
+  gs_gn_id: 136738,
+  qs_loc: 163323,
+  qs_a2r_alt: 0,
+  qs_woe_id: 1203,
+* qs_a1r: 163380
+}

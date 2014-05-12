@@ -8,7 +8,7 @@ mapper._write = function( data, enc, next ){
   try {
 
     // Validation
-    if( !data.properties.qs_loc_lc ){
+    if( !data.properties.qs_gn_id ){
       throw new Error( 'MAPPER - INVALID ID' );
     }
 
@@ -17,7 +17,7 @@ mapper._write = function( data, enc, next ){
     }
 
     this.push({
-      _index: 'pelias', _type: 'locality', _id: data.properties.qs_loc_lc,
+      _index: 'pelias', _type: 'locality', _id: data.properties.qs_gn_id,
       data: {
         gn_id: data.properties.gs_gn_id || '',
         woe_id: data.properties.qs_woe_id || '',
