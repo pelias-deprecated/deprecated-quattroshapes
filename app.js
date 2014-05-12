@@ -7,13 +7,17 @@ var Transform = require('stream').Transform;
 var ShapeFileStream = require('./lib/ShapeFileStream'),
     esclient = require('pelias-esclient');
 
+// sanityCheck
+var sanityCheck = require('./imports/sanityCheck/mapper');
+
 // neighborhoods
-// var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
-// var mapper = require('./imports/neighborhoods/mapper');
+var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
+var mapper = require('./imports/neighborhoods/mapper');
 
 // localities
-var stream = new ShapeFileStream( './data/gn-qs_localities.shp' );
-var mapper = require('./imports/localities/mapper');
+// { _invalid: 118275, _valid: 45110 }
+// var stream = new ShapeFileStream( './data/gn-qs_localities.shp' );
+// var mapper = require('./imports/localities/mapper');
 // var debugmapper = require('./imports/debug/mapper');
 
 // Transform stream for pretty output
@@ -23,10 +27,31 @@ var mapper = require('./imports/localities/mapper');
 //   next();
 // }
 
+var stats = { _invalid:0, _valid:0 }
+sanityCheck.on( 'invalid', function(){
+  stats._invalid++;
+});
+mapper.on( 'invalid', function(){
+  stats._invalid++;
+});
+mapper.on( 'ok', function(){
+  stats._valid++;
+});
+
+setInterval( function(){
+  console.log( 'stats:', stats );
+}, 500 );
+
 stream.on( 'ready', function(){
   stream
     .on( 'error', console.log.bind(this) )
+    .pipe( sanityCheck )
+    .on( 'error', console.log.bind(this) )
     .pipe( mapper )
+    // .on( 'invalid', function( record ){
+    //   console.log( JSON.stringify( record, null, 2 ) );
+    //   // process.exit(1);
+    // })
     .on( 'error', console.log.bind(this) )
     // .pipe( debugmapper )
     .pipe( esclient.stream )
