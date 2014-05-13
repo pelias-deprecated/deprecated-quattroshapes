@@ -10,10 +10,14 @@ var ShapeFileStream = require('./lib/ShapeFileStream'),
 // sanityCheck
 var sanityCheck = require('./imports/sanityCheck/mapper');
 
+// local admin
+var stream = new ShapeFileStream( './data/qs_localadmin.shp' );
+var mapper = require('./imports/localadmin/mapper');
+
 // neighborhoods
 // { _invalid: 0, _valid: 49906 }
-var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
-var mapper = require('./imports/neighborhoods/mapper');
+// var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
+// var mapper = require('./imports/neighborhoods/mapper');
 
 // localities
 // { _invalid: 26404, _valid: 136981 }
