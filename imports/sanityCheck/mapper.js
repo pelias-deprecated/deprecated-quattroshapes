@@ -12,7 +12,7 @@ mapper._write = function( data, enc, next ){
 
   // Skip invalid records
   else if( !data.geometry || !data.geometry.coordinates || !data.geometry.coordinates.length ){
-    console.error( 'SANITY CHECK - INVALID GEOMETRY' );
+    console.error( 'SANITY CHECK - INVALID GEOMETRY', data.geometry );
     this.emit( 'invalid', data );
   }
 
