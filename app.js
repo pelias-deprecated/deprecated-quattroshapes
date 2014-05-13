@@ -10,44 +10,49 @@ var ShapeFileStream = require('./lib/ShapeFileStream'),
 // sanityCheck
 var sanityCheck = require('./imports/sanityCheck/mapper');
 
-// local admin
-var stream = new ShapeFileStream( './data/qs_localadmin.shp' );
-var mapper = require('./imports/localadmin/mapper');
+// // admin0
+// var stream = new ShapeFileStream( './data/qs_adm0.shp' );
+// var mapper = require('./imports/admin0/mapper');
+
+// // admin1
+// var stream = new ShapeFileStream( './data/qs_adm1.shp' );
+// var mapper = require('./imports/admin1/mapper');
+
+// admin2
+// var stream = new ShapeFileStream( './data/qs_adm2.shp' );
+// var mapper = require('./imports/admin2/mapper');
+
+// // local admin
+// var stream = new ShapeFileStream( './data/qs_localadmin.shp' );
+// var mapper = require('./imports/localadmin/mapper');
 
 // neighborhoods
-// { _invalid: 0, _valid: 49906 }
 // var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
 // var mapper = require('./imports/neighborhoods/mapper');
 
 // localities
-// { _invalid: 26404, _valid: 136981 }
 // var stream = new ShapeFileStream( './data/gn-qs_localities.shp' );
 // var mapper = require('./imports/localities/mapper');
 
 // Debugger
-// var debugmapper = require('./imports/debug/mapper');
+// var mapper = require('./imports/debug/mapper');
 
-// Transform stream for pretty output
-// var objectToJsonStream = new Transform({ objectMode: true });
-// objectToJsonStream._transform = function( record, enc, next ){
-//   this.push( JSON.stringify( record, null, 2 ) );
-//   next();
-// }
+// Stats
 
-var stats = { _invalid:0, _valid:0 }
-sanityCheck.on( 'invalid', function(){
-  stats._invalid++;
-});
-mapper.on( 'invalid', function(){
-  stats._invalid++;
-});
-mapper.on( 'ok', function(){
-  stats._valid++;
-});
+// var stats = { _invalid:0, _valid:0 }
+// sanityCheck.on( 'invalid', function(){
+//   stats._invalid++;
+// });
+// mapper.on( 'invalid', function(){
+//   stats._invalid++;
+// });
+// mapper.on( 'ok', function(){
+//   stats._valid++;
+// });
 
-setInterval( function(){
-  console.log( 'stats:', stats );
-}, 500 );
+// setInterval( function(){
+//   console.log( 'stats:', stats );
+// }, 500 );
 
 stream.on( 'ready', function(){
   stream
@@ -60,8 +65,6 @@ stream.on( 'ready', function(){
     //   // process.exit(1);
     // })
     .on( 'error', console.log.bind(this) )
-    // .pipe( debugmapper )
     .pipe( esclient.stream )
-    .on( 'error', console.log.bind(this) )
-    // .pipe( objectToJsonStream ).pipe( process.stdout );
+    .on( 'error', console.log.bind(this) );
 })

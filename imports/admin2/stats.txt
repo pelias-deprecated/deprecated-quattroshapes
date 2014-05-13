@@ -1,0 +1,31 @@
+stats: { _invalid: 1391, _valid: 16823 }
+
+total: 18212
+
+non-falsy properties {
+* qs_adm0_a3: 18212,
+* qs_adm0: 18212,
+* qs_level: 18212,
+* qs_iso_cc: 18212,
+  qs_a0: 18203,
+  qs_a0_lc: 2443,
+  qs_a1r: 3753,
+  qs_a1r_alt: 45,
+  qs_a1r_lc: 3753,
+  qs_a1: 12483,
+  qs_a1_alt: 1624,
+  qs_a1_lc: 11723,
+  qs_a2r: 225,
+  qs_a2r_alt: 225,
+  qs_a2r_lc: 4173,
+  qs_a2: 17678,
+  qs_a2_alt: 4846,
+  qs_a2_lc: 17337,
+  qs_a2_type: 0,
+* qs_source: 18212,
+  qs_pop: 0,
+  qs_id: 0,
+  qs_gn_id: 0,
+  qs_woe_id: 0,
+  qs_scale: 0
+}

@@ -1,0 +1,19 @@
+stats: { _invalid: 52, _valid: 259 }
+
+total: 298
+
+non-falsy properties {
+* qs_adm0_a3: 298,
+* qs_adm0: 298,
+* qs_level: 298,
+* qs_iso_cc: 298,
+  qs_a0: 295,
+  qs_a0_alt: 290,
+  qs_a0_lc: 34,
+* qs_source: 298,
+  qs_pop: 0,
+  qs_id: 0,
+  qs_gn_id: 0,
+  qs_woe_id: 259,
+  qs_scale: 259
+}
