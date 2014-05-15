@@ -1,70 +1,37 @@
 
-var cluster = require('cluster');
-var numCPUs = require('os').cpus().length;
+var ClusterImport = require('./lib/ClusterImport'),
+    QuattroshapesImport = require('./lib/QuattroshapesImport');
 
-var Transform = require('stream').Transform;
+var workload = [{
+    name: 'admin0',
+    data: './data/qs_adm0.shp',
+    mapper: '../imports/admin0/mapper'
+  }, {
+    name: 'admin1',
+    data: './data/qs_adm1.shp',
+    mapper: '../imports/admin1/mapper'
+  }, {
+    name: 'admin2',
+    data: './data/qs_adm2.shp',
+    mapper: '../imports/admin2/mapper'
+  }, {
+    name: 'localadmin',
+    data: './data/qs_localadmin.shp',
+    mapper: '../imports/localadmin/mapper'
+  }, {
+    name: 'neighborhoods',
+    data: './data/qs_neighborhoods.shp',
+    mapper: '../imports/neighborhoods/mapper'
+  }, {
+    name: 'localities',
+    data: './data/gn-qs_localities.shp',
+    mapper: '../imports/localities/mapper'
+}];
 
-var ShapeFileStream = require('./lib/ShapeFileStream'),
-    esclient = require('pelias-esclient');
-
-// sanityCheck
-var sanityCheck = require('./imports/sanityCheck/mapper');
-
-// // admin0
-// var stream = new ShapeFileStream( './data/qs_adm0.shp' );
-// var mapper = require('./imports/admin0/mapper');
-
-// // admin1
-// var stream = new ShapeFileStream( './data/qs_adm1.shp' );
-// var mapper = require('./imports/admin1/mapper');
-
-// admin2
-// var stream = new ShapeFileStream( './data/qs_adm2.shp' );
-// var mapper = require('./imports/admin2/mapper');
-
-// // local admin
-// var stream = new ShapeFileStream( './data/qs_localadmin.shp' );
-// var mapper = require('./imports/localadmin/mapper');
-
-// neighborhoods
-// var stream = new ShapeFileStream( './data/qs_neighborhoods.shp' );
-// var mapper = require('./imports/neighborhoods/mapper');
-
-// localities
-// var stream = new ShapeFileStream( './data/gn-qs_localities.shp' );
-// var mapper = require('./imports/localities/mapper');
-
-// Debugger
-// var mapper = require('./imports/debug/mapper');
-
-// Stats
-
-// var stats = { _invalid:0, _valid:0 }
-// sanityCheck.on( 'invalid', function(){
-//   stats._invalid++;
-// });
-// mapper.on( 'invalid', function(){
-//   stats._invalid++;
-// });
-// mapper.on( 'ok', function(){
-//   stats._valid++;
-// });
-
-// setInterval( function(){
-//   console.log( 'stats:', stats );
-// }, 500 );
-
-stream.on( 'ready', function(){
-  stream
-    .on( 'error', console.log.bind(this) )
-    .pipe( sanityCheck )
-    .on( 'error', console.log.bind(this) )
-    .pipe( mapper )
-    // .on( 'invalid', function( record ){
-    //   console.log( JSON.stringify( record, null, 2 ) );
-    //   // process.exit(1);
-    // })
-    .on( 'error', console.log.bind(this) )
-    .pipe( esclient.stream )
-    .on( 'error', console.log.bind(this) );
-})
+var cImport = new ClusterImport( workload, function( unitOfWork )
+{
+    var qImport = new QuattroshapesImport( unitOfWork );
+    qImport.stats.on( 'stats', function( statsObj ){
+      console.log( statsObj.name, statsObj.stats );
+    });
+});

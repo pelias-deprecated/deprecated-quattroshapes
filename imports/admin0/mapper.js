@@ -31,7 +31,7 @@ mapper._write = function( data, enc, next ){
 
   } catch( e ) {
 
-    console.error( e );
+    // console.error( e );
     this.emit( 'invalid', data );
     // console.log( JSON.stringify( data.geometry, null, 2 ) );
 
