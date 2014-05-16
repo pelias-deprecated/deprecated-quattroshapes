@@ -62,7 +62,7 @@ qs_adm0.prj           qs_adm2.cpg  qs_localadmin.shp
 To import all the data to Pelias:
 
 ```bash
-peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
+peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -i
 ```
 
 The import takes some time but should utilize all available CPUs. Best get a coffee. You should see live import statistics scrolling past on screen.
