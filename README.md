@@ -65,4 +65,18 @@ To import all the data to Pelias:
 peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
 ```
 
-The import takes some time but should utilize all available CPUs. Bets get a coffeee. You should see live import statistics on screen.
+The import takes some time but should utilize all available CPUs. Best get a coffee. You should see live import statistics scrolling past on screen.
+
+### index refresh
+
+If index `refresh_interval` has been disabled you may need to tell ES to refresh once the import is complete:
+
+```bash
+curl -X POST http://localhost:9200/pelias/_refresh
+```
+
+### todo
+
+- Better logging of import runs / statistics
+- Investigate ES error rate higher when running a multi-core import or lower spec computers
+- Properly exit the parent process once the import is complete with appropriate code
