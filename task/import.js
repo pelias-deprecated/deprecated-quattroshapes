@@ -1,16 +1,27 @@
 
-var ClusterImport = require('../lib/ClusterImport'),
-    QuattroshapesImport = require('../lib/QuattroshapesImport'),
+var QuattroshapesImport = require('../lib/QuattroshapesImport'),
     workload = require('../workload');
 
-module.exports = function () {
+var importer = function( unitOfWork, done ) {
 
-  var cImport = new ClusterImport( workload, function( unitOfWork )
-  {
-    var qImport = new QuattroshapesImport( unitOfWork );
-    qImport.stats.on( 'stats', function( statsObj ){
-      console.log( statsObj.name, statsObj.stats );
-    });
+  var qImport = new QuattroshapesImport( unitOfWork );
+  
+  qImport.on( 'complete', done );
+
+  qImport.stats.on( 'stats', function( statsObj ){
+    console.log( statsObj.name, JSON.stringify( statsObj.stats ) );
   });
 
 }
+
+// Process imports in sync
+module.exports = function(){
+
+  var next = function(){}
+
+  workload.reverse().forEach( function( unitOfWork ){
+    next = importer.bind( this, unitOfWork, next );
+  });
+
+  next();
+};

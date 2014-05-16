@@ -22,6 +22,7 @@ peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes
     -V, --version   output the version number
     -d, --download  download quattroshapes data
     -i, --import    import all quattroshapes data in to Pelias
+    -c, --cluster   !!EXPERIMENTAL!! utilize all available CPUs for faster imports
 
 ```
 
@@ -65,9 +66,19 @@ To import all the data to Pelias:
 peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -i
 ```
 
-The import takes some time but should utilize all available CPUs. Best get a coffee. You should see live import statistics scrolling past on screen.
+The import takes some time, best get a coffee. You should see live import statistics scrolling past on screen.
 
 **NOTE:** You should make sure you are using the latest mapping file from the `node` branch of the main `pelias` repo before continuing.
+
+### cluster import
+
+You can try the experiemental cluster import which uses all available CPUs:
+
+```bash
+peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -c
+```
+
+**NOTE:** The cluster import appears to increase error rates in elasticsearch; this is most likely due to the large amount of data being sent to elasticsearch.
 
 ### index refresh
 
@@ -80,5 +91,22 @@ curl -X POST http://localhost:9200/pelias/_refresh
 ### todo
 
 - Better logging of import runs / statistics
+- Investigate long waits and 100% cpu utilization by node process (expecially during admin0)
 - Investigate ES error rate higher when running a multi-core import or lower spec computers
 - Properly exit the parent process once the import is complete with appropriate code
+
+### stats
+
+How to interpret import stats:
+
+```javascript
+admin0 {            // name of index
+  total: 314,       // total number of records read from .shp file
+  invalid: 55,      // number of records the import scripts decided were invalid
+  valid: 259,       // number of records the import scripts decided were ok to send to elasticsearch
+  written: 259,     // number of records written to the elasticsearch client adapter
+  indexed: 0,       // number of records successfully indexed in elasticsearch
+  errored: 0,       // number of records for which elasticsearch returned an error
+  queued: 259       // number of records queued on the elasticsearch end, waiting to be processed
+}
+```

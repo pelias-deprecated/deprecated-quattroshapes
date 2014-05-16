@@ -29,7 +29,7 @@
     "elasticsearch": ">=1.1.1"
   },
   "dependencies": {
-    "pelias-esclient": "0.0.5",
+    "pelias-esclient": "0.0.6",
     "request": "^2.34.0",
     "commander-plus": "0.0.6",
     "shapefile": "^0.3.0",
