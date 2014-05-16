@@ -1,0 +1,31 @@
+[{
+  "name": "admin0",
+  "remote": "qs_adm0.zip",
+  "data": "./data/qs_adm0.shp",
+  "mapper": "../imports/admin0/mapper"
+}, {
+  "name": "admin1",
+  "remote": "qs_adm1.zip",
+  "data": "./data/qs_adm1.shp",
+  "mapper": "../imports/admin1/mapper"
+}, {
+  "name": "admin2",
+  "remote": "qs_adm2.zip",
+  "data": "./data/qs_adm2.shp",
+  "mapper": "../imports/admin2/mapper"
+}, {
+  "name": "localadmin",
+  "remote": "qs_localadmin.zip",
+  "data": "./data/qs_localadmin.shp",
+  "mapper": "../imports/localadmin/mapper"
+}, {
+  "name": "localities",
+  "remote": "gn-qs_localities.zip",
+  "data": "./data/gn-qs_localities.shp",
+  "mapper": "../imports/localities/mapper"
+}, {
+  "name": "neighborhoods",
+  "remote": "qs_neighborhoods.zip",
+  "data": "./data/qs_neighborhoods.shp",
+  "mapper": "../imports/neighborhoods/mapper"
+}]
