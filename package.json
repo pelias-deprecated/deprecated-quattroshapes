@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "bin": {
-    "pelias-quattroshapes": "./bin/cli.js"
+    "pelias-quattroshapes": "./bin/pelias-quattroshapes.js"
   },
   "repository": {
     "type": "git",
