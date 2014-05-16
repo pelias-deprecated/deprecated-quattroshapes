@@ -31,8 +31,6 @@ You must download and unzip the quattroshapes data files in to the `/data` direc
 
 To simplify this process & grab all the latest data files:
 
-NOTE: These files are large, make sure you have at least 3.5GB free space before continuing.
-
 ```bash
 peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
  qs_adm0.zip                    [===================] 100% 0.0s
@@ -42,6 +40,8 @@ peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
  gn-qs_localities.zip           [===================] 100% 0.0s
  qs_neighborhoods.zip           [===================] 100% 0.0s
 ```
+
+**NOTE:** These files are large, make sure you have at least 3.5GB free space before continuing.
 
 You can confirm the data files were successfully downloaded by executing `ls` on the `/data` directory:
 
@@ -66,6 +66,8 @@ peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
 ```
 
 The import takes some time but should utilize all available CPUs. Best get a coffee. You should see live import statistics scrolling past on screen.
+
+**NOTE:** You should make sure you are using the latest mapping file from the `node` branch of the main `pelias` repo before continuing.
 
 ### index refresh
 
