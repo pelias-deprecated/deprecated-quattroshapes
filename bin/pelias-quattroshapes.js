@@ -7,6 +7,7 @@ program
   .version('0.0.0')
   .usage('[options]')
   .option('-d, --download', 'download quattroshapes data')
+  .option('-i, --import', 'import all quattroshapes data in to Pelias')
   .parse(process.argv);
 
 if( program.download ){
