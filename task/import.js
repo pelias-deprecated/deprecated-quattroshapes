@@ -1,7 +1,7 @@
 
-var ClusterImport = require('./lib/ClusterImport'),
-    QuattroshapesImport = require('./lib/QuattroshapesImport'),
-    workload = require('./workload');
+var ClusterImport = require('../lib/ClusterImport'),
+    QuattroshapesImport = require('../lib/QuattroshapesImport'),
+    workload = require('../workload');
 
 module.exports = function () {
 
