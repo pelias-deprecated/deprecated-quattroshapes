@@ -27,7 +27,7 @@ peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes
 
 ### downloading data
 
-You must download and unzip the quattroshapes data files in to the `/data` directory before starting an import.
+You must download and unzip the quattroshapes data files in to the `./data` directory before starting an import.
 
 To simplify this process & grab all the latest data files:
 
@@ -43,7 +43,7 @@ peter@manta:/var/www/pelias-quattroshapes$ ./bin/pelias-quattroshapes -d
 
 **NOTE:** These files are large, make sure you have at least 3.5GB free space before continuing.
 
-You can confirm the data files were successfully downloaded by executing `ls` on the `/data` directory:
+You can confirm the data files were successfully downloaded by executing `ls` on the `./data` directory:
 
 ```bash
 peter@manta:/var/www/pelias-quattroshapes$ ls data
