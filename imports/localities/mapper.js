@@ -23,7 +23,15 @@ mapper._write = function( data, enc, next ){
         woe_id: data.properties.qs_woe_id || '',
         boundaries: data.geometry,
         center_point: geoJsonCenter( data.geometry ),
-        suggest: data.properties.qs_loc
+        suggest: {
+          input: data.properties.qs_loc,
+          output: data.properties.qs_loc,
+          payload: {
+            type: 'locality',
+            geoname_id: data.properties.gs_gn_id || '',
+            woe_id: data.properties.qs_woe_id || ''
+          }
+        }
       }
     });
 

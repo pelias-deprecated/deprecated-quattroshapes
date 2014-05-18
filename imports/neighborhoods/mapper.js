@@ -23,7 +23,15 @@ mapper._write = function( data, enc, next ){
         woe_id: data.properties.woe_id || '',
         boundaries: data.geometry,
         center_point: geoJsonCenter( data.geometry ),
-        suggest: data.properties.name
+        suggest: {
+          input: data.properties.name,
+          output: data.properties.name,
+          payload: {
+            type: 'neighborhood',
+            geoname_id: data.properties.gn_id || '',
+            woe_id: data.properties.woe_id || ''
+          }
+        }
       }
     });
 
