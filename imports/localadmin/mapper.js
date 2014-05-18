@@ -30,7 +30,8 @@ mapper._write = function( data, enc, next ){
             type: 'localadmin',
             geoname_id: data.properties.gs_gn_id || '',
             woe_id: data.properties.qs_woe_id || ''
-          }
+          },
+          weight: 5
         }
       }
     });

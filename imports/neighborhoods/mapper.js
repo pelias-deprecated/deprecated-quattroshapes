@@ -30,7 +30,8 @@ mapper._write = function( data, enc, next ){
             type: 'neighborhood',
             geoname_id: data.properties.gn_id || '',
             woe_id: data.properties.woe_id || ''
-          }
+          },
+          weight: 6
         }
       }
     });
