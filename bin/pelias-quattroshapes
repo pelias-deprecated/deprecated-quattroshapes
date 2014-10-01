@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+// deprecation notice
+console.warn('this repo has been deprecated in favour of:');
+console.warn('https://github.com/pelias/quattroshapes-pipeline');
+console.warn('please use that importer instead');
+process.exit(1);
+
 var program = require('commander-plus'),
     workload = require('../workload');
 
