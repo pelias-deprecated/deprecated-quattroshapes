@@ -1,4 +1,10 @@
 
+# Deprecated
+
+**this repo has been deprecated in favour of** https://github.com/pelias/quattroshapes-pipeline
+
+**please use that importer instead**
+
 ### pelias-quattroshapes
 
 `pelias-geonames` comes with a command-line tool to make it easier to download/parse and import quattroshapes data in to Pelias.
